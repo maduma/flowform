@@ -1,22 +1,12 @@
 """
-Terms:
-- form
-collection data (name, date, email, ...)
-
-- flow
-a flow is a collection of forms
-
-- workflow
-a path from a start form to and end form.
-a workflow is a state machine, each state is represented by a form and
-events are derived from flow data.
-e.g a function that take the flow and the current form and return the
-next flow
+workflow: function that take the flow and the current form and 
+return the next form
 """
 
 START_FORM = 'START'
 END_FORM   = 'END'
 
+# create workflow unconditionaly following a defined order or form
 def sequentialWorkflowFactory(forms):
 	def workflow(form, flow=None):
 		if form == START_FORM:
@@ -43,7 +33,6 @@ def main():
 	print(workflow('email')) # age
 	print(workflow('genre')) # END
 	print(workflow('surname')) # email
-	
 	
 if __name__ == '__main__':
 	main()
